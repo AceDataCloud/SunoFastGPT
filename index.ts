@@ -31,7 +31,7 @@ const generateHandler = createToolHandler({
     prompt: z.string().trim().min(1).max(10000).meta({ title: 'Prompt', isToolParam: true } satisfies InputSchemaMetaType),
     model: z.string().trim().min(1).max(256).default('chirp-v6').meta({ title: 'Model' } satisfies InputSchemaMetaType),
     instrumental: z.boolean().default(true).meta({ title: 'Instrumental' } satisfies InputSchemaMetaType),
-    duration: z.number().int().min(1).max(60).default(10).meta({ title: 'Duration' } satisfies InputSchemaMetaType),
+    duration: z.number().int().min(10).max(360).default(10).meta({ title: 'Duration' } satisfies InputSchemaMetaType),
   }),
   outputSchema,
   secretSchema,
@@ -54,13 +54,13 @@ const retrieveHandler = createToolHandler({
 export default defineToolSet({
   manifest: {
     pluginId: 'acedataSuno',
-    version: '0.1.0',
+    version: '0.2.0',
     name: { en: 'Ace Data Cloud Suno', 'zh-CN': 'Ace Data Cloud Suno 音乐' },
     description: {
       en: 'Generate audio with Suno through Ace Data Cloud and retrieve the same task.',
       'zh-CN': '通过 Ace Data Cloud Suno 音乐生成并查询同一任务。'
     },
-    versionDescription: { en: 'Initial release', 'zh-CN': '首次发布' },
+    versionDescription: { en: 'Align API limits and task status handling', 'zh-CN': '对齐 API 限制和任务状态处理' },
     author: 'Ace Data Cloud',
     repoUrl: 'https://github.com/AceDataCloud/SunoFastGPT',
     tutorialUrl: 'https://github.com/AceDataCloud/SunoFastGPT#quick-start',
