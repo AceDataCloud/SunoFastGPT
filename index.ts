@@ -82,7 +82,7 @@ const batchHandler = createToolHandler({
 export default defineToolSet({
   manifest: {
     pluginId: 'acedataSuno',
-    version: '0.2.0',
+    version: '0.2.1',
     name: { en: 'Ace Data Cloud Suno', 'zh-CN': 'Ace Data Cloud Suno 音乐' },
     description: {
       en: 'Generate audio with Suno through Ace Data Cloud and retrieve the same task.',
