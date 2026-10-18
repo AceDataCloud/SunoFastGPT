@@ -1,0 +1,6 @@
+{
+  "prompt": "A short gentle instrumental piano melody for a sunrise, no vocals.",
+  "model": "chirp-v6",
+  "instrumental": true,
+  "duration": 10
+}
