@@ -1,22 +1,34 @@
-# Ace Data Cloud Suno for FastGPT
+# Suno by Ace Data Cloud for FastGPT
 
-Generate audio and retrieve the result in a FastGPT workflow. [简体中文](README_zh_CN.md) · [Current pricing](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunofastgpt_readme_pricing)
+This independent plugin is maintained by **Ace Data Cloud** and uses your Ace application API token. It integrates Suno; it is not an official Suno or FastGPT plugin.
+
+Generate Suno music and retrieve the result in a FastGPT workflow. [简体中文](README_zh_CN.md) · [Current pricing](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunofastgpt_readme_pricing)
 
 ## Quick start
 
 ### 1. Install
 
-Use FastGPT 4.15 or later. Once published, search FastGPT Marketplace for **Ace Data Cloud Suno** and verify the author is **Ace Data Cloud**. Before listing, a business or self-hosted administrator can build and upload this repository's .pkg. FastGPT Cloud does not currently allow direct custom plugin uploads.
+[Official FastGPT plugin Marketplace](https://cloud.fastgpt.io/config/tool/marketplace) · [Current listing review](https://github.com/labring/fastgpt-community-plugins/pull/74). This candidate is not listed yet; the review link is not an install button.
+
+Use FastGPT 4.15 or later. Once published, search FastGPT Marketplace for **Suno by Ace Data Cloud** and verify the author is **Ace Data Cloud**. Before listing, a business or self-hosted administrator can build and upload this repository's .pkg. FastGPT Cloud does not currently allow direct custom plugin uploads.
 
 ### 2. Get an API key
+
+New account? Register and sign in first. If General application is missing, choose **Initialize General Application** in Applications. This token belongs to Ace Data Cloud, not your FastGPT login.
 
 Sign in to [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunofastgpt_readme_api_key), open **General Application**, and confirm **Suno** access, balance, and current price. Copy the key using icon **1** below; or select **2 Manage Keys → Create** for a separate FastGPT key. If **Allowed APIs** is enabled, include both /suno/audios and /suno/tasks. In the FastGPT plugin configuration, paste only the key into **Ace Data Cloud API key**, without Bearer or quotes.
 
 ![Actual Ace Data Cloud application screen with the key redacted](assets/get-api-key-en.png)
 
+To create an optional dedicated token, choose **Manage Keys → Create**, give it a name such as `FastGPT Suno`, set only the expiration and API restrictions you need, then create and copy it. Use the service and task paths listed above.
+
+![Real Ace Console Create New Credential dialog](assets/create-api-key-en.png)
+
+This is a real Ace Console screenshot reused from the [Suno Dify source guide](https://github.com/AceDataCloud/SunoDify/blob/8d3d03570e73324220f111f7fe343da0792a8071/README.md), 2026-10-08/09. The image uses the example name `Dify tutorial`; use your own FastGPT token name. No live credential is shown.
+
 ### 3. Build the first workflow
 
-In **Studio → Create Agent → Workflow**, start with **Process starts**. From **System Tools**, add **Ace Data Cloud Suno / Generate audio** and **Retrieve task**. Activate both tools with the configured **System secret**. Connect **Process starts → Generate audio → Retrieve task → Basic / Assigned Reply**. Enter:
+In **Studio → Create Agent → Workflow**, start with **Process starts**. From **System Tools**, add **Suno by Ace Data Cloud / Generate Suno music** and **Retrieve Suno task**. Activate both tools with the configured **System secret**. Connect **Process starts → Generate Suno music → Retrieve Suno task → Basic / Assigned Reply**. Enter:
 
 | Generate field | First-run value |
 |---|---|
@@ -26,7 +38,7 @@ In **Studio → Create Agent → Workflow**, start with **Process starts**. From
 
 **Prompt**: A short gentle instrumental piano melody for a sunrise, no vocals.
 
-For **Retrieve task → Task ID**, choose **Variable Reference → Generate audio → Task ID**. In **Assigned Reply**, insert the Retrieve task outputs (status, success, taskId, mediaUrls, and costCredits) with the variable picker. Choose **Save Only**, then **Run Preview** once. If status is pending, save taskId. To check later, create a separate **Process starts → Retrieve task → Basic / Assigned Reply** workflow and enter that same ID. Running the generation workflow again submits and bills another generation.
+For **Retrieve Suno task → Task ID**, choose **Variable Reference → Generate Suno music → Task ID**. In **Assigned Reply**, insert the Retrieve Suno task outputs (status, success, taskId, mediaUrls, and costCredits) with the variable picker. Choose **Save Only**, then **Run Preview** once. If status is pending, save taskId. To check later, create a separate **Process starts → Retrieve Suno task → Basic / Assigned Reply** workflow and enter that same ID. Running the generation workflow again submits and bills another generation.
 
 When status is succeeded and success is true, open a link from mediaUrls. Match the task ID and reported Credits with Ace Data Cloud request history; pricing and your package exchange rate may change.
 
@@ -38,7 +50,7 @@ The FastGPT screenshots below show installation and a **read-only query of a pre
 
 ![Previously generated media returned in FastGPT Run Preview](assets/fastgpt-lookup-result.png)
 
-For several existing tasks, **Retrieve tasks** accepts 1–20 Task IDs and queries them in one read-only call. Check each item’s status; a batch is complete only when all items succeed. This does not submit new generation.
+For several existing tasks, **Retrieve Suno tasks** accepts 1–20 Task IDs and queries them in one read-only call. Check each item’s status; a batch is complete only when all items succeed. This does not submit new generation.
 
 A batch stays pending if a requested task is missing or a returned task ID cannot be matched. Verify the existing IDs; do not submit generation again.
 
@@ -71,3 +83,7 @@ Local secret files are ignored by Git. Do not publish them.
 | timeout / 5xx / failed | Inspect the original task and request history before resubmitting. Give support the task or trace ID, never your key. |
 
 The plugin sends the selected inputs and token to api.acedata.cloud. Calls follow [current pricing](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=sunofastgpt_readme_pricing). [Privacy](PRIVACY.md) · [Source and support](https://github.com/AceDataCloud/SunoFastGPT/issues).
+
+## Screenshot scope
+
+FastGPT screenshots below/above are real self-hosted FastGPT 4.15.8 test captures from 2026-10-09. They show the earlier display names and plugin 0.1.0. Current 0.2.2 service-first names and Marketplace installation are not established by those historical images.

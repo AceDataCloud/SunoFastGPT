@@ -82,13 +82,13 @@ const batchHandler = createToolHandler({
 export default defineToolSet({
   manifest: {
     pluginId: 'acedataSuno',
-    version: '0.2.1',
-    name: { en: 'Ace Data Cloud Suno', 'zh-CN': 'Ace Data Cloud Suno 音乐' },
+    version: '0.2.2',
+    name: { en: 'Suno by Ace Data Cloud', 'zh-CN': 'Suno 音乐 · Ace Data Cloud' },
     description: {
-      en: 'Generate audio with Suno through Ace Data Cloud and retrieve the same task.',
-      'zh-CN': '通过 Ace Data Cloud Suno 音乐生成并查询同一任务。'
+      en: 'Generate Suno music, songs and instrumental audio through Ace Data Cloud, then retrieve the same task.',
+      'zh-CN': '通过 Ace Data Cloud 生成 Suno 音乐、歌曲或纯音乐，并查询同一任务。'
     },
-    versionDescription: { en: 'Align API limits and task status handling', 'zh-CN': '对齐 API 限制和任务状态处理' },
+    versionDescription: { en: 'Service-first discovery and application token onboarding', 'zh-CN': '服务名优先的发现入口与应用令牌指引' },
     author: 'Ace Data Cloud',
     repoUrl: 'https://github.com/AceDataCloud/SunoFastGPT',
     tutorialUrl: 'https://github.com/AceDataCloud/SunoFastGPT#quick-start',
@@ -99,21 +99,21 @@ export default defineToolSet({
   children: [
     {
       id: 'generate',
-      name: { en: 'Generate audio', 'zh-CN': '生成Suno 音乐' },
+      name: { en: 'Generate Suno music', 'zh-CN': '生成Suno 音乐' },
       description: { en: 'Submit one Suno generation and return its task ID.', 'zh-CN': '提交一次Suno 音乐生成并返回任务 ID。' },
       toolDescription: 'Submit once. Do not call again to check a pending task.',
       handler: generateHandler
     },
     {
       id: 'retrieveTasks',
-      name: { en: 'Retrieve tasks', 'zh-CN': '批量查询任务' },
+      name: { en: 'Retrieve Suno tasks', 'zh-CN': '批量查询任务' },
       description: { en: 'Read existing task IDs without submitting a generation.', 'zh-CN': '只读查询已有任务 ID，不重新生成。' },
       toolDescription: 'Use only existing task IDs. Each item retains its own pending, failed, or succeeded state.',
       handler: batchHandler
     },
     {
       id: 'retrieveTask',
-      name: { en: 'Retrieve task', 'zh-CN': '查询任务' },
+      name: { en: 'Retrieve Suno task', 'zh-CN': '查询任务' },
       description: { en: 'Read the status and result of an existing Suno task.', 'zh-CN': '读取已有Suno 音乐任务的状态和结果。' },
       toolDescription: 'Read an existing task by ID without submitting a new generation.',
       handler: retrieveHandler
